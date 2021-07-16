@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>상명대IT챗봇</title>
+<style>
+    
+@import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+.normal     { font-weight: 400 }
+.bold       { font-weight: 700 }
+.bolder     { font-weight: 800 }
+.light      { font-weight: 300 }
+
+
+body{
+		background: beige;
+		margin: 0;
+	}
+    
+	.nav-con{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background: grey;
+		list-style-type: none;
+		position: fixed;
+		top: 0;
+	}
+
+	.nav-item{
+		padding: 15px;
+		cursor: pointer;
+	}
+
+	.nav-item:hover{
+		background: wheat;
+	}
+
+	.nav-item a{
+		text-align: center;
+		text-decoration: none;
+		color: black;
+		font-size: 30px;
+		font-style: italic;
+		font-weight: 900;
+	}
+
+	.nav-item b {
+		text-align: bottom;
+		text-decoration: none;
+		color: white;
+		font-size: 25px;
+	}
+
+	.nav-Main{
+		padding: 15px;
+		cursor: pointer;
+	}
+
+.total{
+	position: absolute;
+	top: 120px;
+	left: 25%;
+    background-color: #0D2145;
+    width: 43vw; 
+    height: 90.4vh;
+    margin: 0 auto;
+	padding: 0.1%;
+	border-radius: 10px;
+  }
+
+.jstalktheme
+{
+	background-color: #798c9c;
+}
+
+.jstalktheme .clear
+{
+	clear: both;
+}
+
+.jstalktheme .blank
+{
+	clear: both;
+	height: 4px;
+}
+
+.jstalktheme .msg
+{
+	height: calc(100% - 72px);
+	overflow-y: scroll;
+	
+	margin-left: 4px;
+	font-size: 18px;
+}
+
+.jstalktheme .msg .time
+{
+	font-size: 13px;
+}
+
+.jstalktheme .msg .mytalk
+{
+	float: right;
+	width: 100%;
+}
+
+.jstalktheme .msg .mytalk .time
+{
+	float: right;
+	bottom: 0;
+}
+
+.jstalktheme .msg .mytalk .a
+{
+	float: right;
+	position: relative;
+	min-height: 24px;
+	max-width: calc(70% - 64px);
+	left: 2px;
+	background-color: #fff;
+	border-radius: 3px;
+	z-index: 2;
+	padding: 0px 4px 0px 4px;
+	word-break: break-all;
+}
+
+.jstalktheme .msg .mytalk .b
+{
+	float: right;
+	position: relative;
+	width: 8px;
+	height: 22px;
+	background: url(./chat_balloon_yellow.right.png) no-repeat;
+	z-index: 1;
+}
+
+.jstalktheme .msg .othertalk
+{
+	float: left;
+	width: 100%;
+}
+
+.jstalktheme .msg .othertalk .profile_image
+{
+	float: left;
+	width: 40px;
+	height: 40px;
+	border-radius: 14px; 
+}
+
+.jstalktheme .msg .othertalk .box
+{
+	float: left;
+	width: calc(100% - 48px);
+}
+
+.jstalktheme .msg .othertalk .box .profile_name
+{
+	font-size: 15px;
+	margin-left: 2px;
+}
+
+.jstalktheme .msg .othertalk .box .a
+{
+	float: left;
+	position: relative;
+	width: 8px;
+	height: 22px;
+	background: url(./chat_balloon_white.left.png) no-repeat;
+	z-index: 1;
+}
+
+.jstalktheme .msg .othertalk .box .b
+{
+	float: left;
+	position: relative;
+	min-height: 24px;
+	max-width: calc(70% - 64px);
+	left: -2px;
+	background-color: #bed0e5;
+	border-radius: 3px;
+	z-index: 2;
+	padding: 0px 4px 0px 4px;
+	word-break: break-all;
+}
+
+.jstalktheme .msg .othertalk .box .time
+{
+	float: left;
+}
+
+.jstalktheme .sendmsg
+{
+	
+}
+
+.jstalktheme .sendmsg .textarea
+{
+	float: left;
+	width: calc(100% - 68px);
+	height: 10vh;
+	border-radius: 8px 0px 0px 8px;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 2px 2px 2px;
+	resize: none;
+}
+
+.jstalktheme .sendmsg .button
+{
+	float: right;
+	width: 62px;
+	height: 10.6vh;
+	background-color: #CCE5ED;
+	border-radius: 0px 8px 8px 0px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: center;
+	display: table;
+	cursor: pointer;
+}
+
+.jstalktheme .sendmsg .button p
+{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.container{
+    position: absolute;
+	left: 27%;
+	top: 30px;
+    height: auto;
+}
+
+html,body {
+	padding:0px;
+	margin:0px;
+	font-family: 'NanumSquare', sans-serif;
+	position:relative;
+}
+
+a,img {
+	border:0px;
+	text-decoration:none;
+}
+ul,li {
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+h1 {
+	color:#525252;
+	font-size:40px;
+	font-weight:100;
+	text-align:center;
+	margin:0px;
+	margin-top:193px;
+}
+h1 > b {
+	font-weight:900;
+}
+
+#best_search {
+	width:740px;
+	margin:0 auto;
+	padding-top:50px;
+	text-align:center;
+}
+#best_search li,dd {
+	display:inline-block;
+	vertical-align:middle;
+}
+button {
+	width:121px;
+	background-color:#0085e2;
+	color:#fff;
+	border:0px;
+	height:63px;
+	margin-left:-5px;
+	padding:0px;
+	font-size:18px;
+}
+#best_search li p {
+	color:#393939;
+	font-size:17px;
+	font-weight:bold;
+	margin:0px;
+	padding-right:30px;
+}
+dd {
+	margin:0px;
+}
+dd  a.t{
+	cursor:pointer;
+	margin:0px;
+	color:#4b4b4b;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	width:94px;
+	white-space:nowrap;
+	display:inline-block;
+	font-size:17px;
+	text-align:left;
+	padding-right:13px;
+	font-weight:700;
+	vertical-align:middle;
+}
+dd .num {
+	background-color:#4b4b4b;
+	color:#fff;
+	font-size:10px;
+	margin-right:10px;
+	vertical-align:middle;
+	width:18px;
+	height:18px;
+	float:left;
+	line-height:18px;
+	text-align:center;
+}
+.best_add {
+	border:1px solid #bebebe;
+	color:#4b4b4b;
+	padding:0px 4px;
+	margin-left:10px;
+}
+
+#wrap {
+	margin:0px;
+	padding:0px;
+	width:100%;
+}
+
+</style>
+<script>
+var test_type = 0;
+
+function jstalktheme_addmsg(type, name, time, msg)
+{
+	var ocontainer = document.getElementById("jstalktheme_test");
+	var ocontainer_msg = ocontainer.getElementsByClassName("msg")[0];
+	
+	var onewmsg = document.createElement("div");
+	var onewblank = document.createElement("div");
+	
+	if(type)
+	{
+		onewmsg.className="othertalk";
+		onewmsg.innerHTML = 
+		"<div class=\"profile_image\" style=\"background: url(./profile_image.png) no-repeat;\">\n"+
+		"</div>\n"+
+		"<div class=\"box\">\n"+
+		"<div class=\"profile_name\">\n"+
+		name+"\n"+
+		"</div>\n"+
+		"<div class=\"a\">\n"+
+		"</div>\n"+
+		"<div class=\"b\">\n"+
+		msg+"\n"+
+		"</div>\n" +
+		"<div class=\"time\">\n"+
+		time+"\n"+
+		"</div>\n"+
+		"</div>\n";
+	}else{
+		onewmsg.className="mytalk";
+		onewmsg.innerHTML = 
+		"<div class=\"b\">\n"+
+		"</div>\n"+
+		"<div class=\"a\">\n"+
+		msg+"\n"+
+		"</div>\n"+
+		"<div class=\"time\">\n"+
+		time+"\n"+
+		"</div>\n" +
+		"";
+	}
+	
+	onewmsg.innerHTML +=
+    "<div class=\"clear\">\n"+
+    "</div>";
+	
+	onewblank.className="blank";
+	
+	ocontainer_msg.appendChild(onewmsg);
+	ocontainer_msg.appendChild(onewblank);
+	
+	ocontainer_msg.scrollTop = ocontainer_msg.scrollHeight;
+}
+
+
+function jstalktheme_testfunc()
+{
+	var otxtmsg = document.getElementById("jstalktheme_testmsg");
+	
+	var d = new Date();
+	var ampm = (d.getHours()>12 ?  "PM" : "AM");
+	var h = (d.getHours()>12 ? d.getHours()-12 : d.getHours());
+	var m = d.getMinutes();
+
+	test_type ^= 0x01;
+	jstalktheme_addmsg(test_type, "IT챗봇", ampm+" "+h+":"+m, otxtmsg.value.replace("\n","<br />\n"));
+}
+function clear_input()
+{
+	var e = document.getElementsByClassName("textarea")
+	for(var i = 0; i < e.length; i++){
+		e[i].value ='';
+	}
+}
+
+
+</script>
+</head>
+
+<body>
+	<nav>
+		<ul class = "nav-con">
+			<li class="nav-item"> <a href="">K3SI</a></li>
+			<li class="nav-item"> <b href="">설명글</b></li>
+			<li class="nav-item"> <b href="">챗봇</b></li>
+			<li class="nav-item"> <b href="">인기검색어</b></li>
+			<li class="nav-item"> <b href="">문의하기</b></li>
+		</ul>
+	</nav>
+    <div class="total">
+	    <div class="jstalktheme" id="jstalktheme_test" style="width:98%; height: 86vh;margin: 0 auto; margin-top: 0.5vh;border-radius: 6px;">
+
+	    <div class="msg"></div>
+
+    	<div class="sendmsg" style="height:4vh ;">
+  	     <textarea class="textarea" id="jstalktheme_testmsg" placeholder="메시지를 입력하세요" onkeypress="if(event.keyCode==13){ jstalktheme_testfunc(); this.value=''; return false; }else if(event.keyCode==10){ this.value+='\n'; }"></textarea>
+	    <div class="button" onclick="jstalktheme_testfunc(); clear_input();">
+		    <p>전송</p> 
+	    </div>
+  	    <div class="clear">
+  	    </div>
+	    </div>
+
+	    </div>
+    </div>
+</body>
+</html>
